@@ -1,0 +1,24 @@
+<!-- search_results.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search Results</title>
+</head>
+<body>
+    <h1>Search Results</h1>
+
+    {% if results %}
+        <ul>
+            {% for name, link in results %}
+                <li>
+                    <strong>Name and Link:</strong> <a href="{{ link }}">{{ name }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No search results found.</p>
+    {% endif %}
+</body>
+</html>
+

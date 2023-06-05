@@ -1,0 +1,19 @@
+<!-- search_form.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Content Search</title>
+</head>
+<body>
+    <h1>Content Search</h1>
+
+    <form method="POST" action="{% url 'skysearch' %}">
+        {% csrf_token %}
+        <label for="content_name">Enter Content Name:</label>
+        <input type="text" id="content_name" name="content_name" required>
+        <button type="submit">Search</button>
+    </form>
+</body>
+</html>
+
