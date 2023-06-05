@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Website Scraper</title>
+</head>
+<body>
+  <h1>Search:</h1>
+  <form method="GET" action="{% url 'search' %}">
+    <input type="text" name="content_name" placeholder="Enter content name">
+    <button type="submit">Search</button>
+  </form>
+
+  <h1>Recent Movies:</h1>
+  <ul>
+    {% for movie in movies %}
+    <li><a href="{{ movie.links }}">{{ movie.name }}</a></li>
+    {% endfor %}
+  </ul>
+
+  <h1>Categories:</h1>
+  <ul>
+    {% for link, name in zipped_links_and_names %}
+    <li><a href="{{ link }}">{{ name }}</a></li>
+    {% endfor %}
+  </ul>
+</body>
+</html>
+
