@@ -4,9 +4,10 @@
 <html>
 <head>
     <title>Content Search</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
-    <h1>Content Search</h1>
+    <h1 class="text-center">skyScraper</h1>
 
     <form method="POST" action="{% url 'skysearch' %}">
         {% csrf_token %}
