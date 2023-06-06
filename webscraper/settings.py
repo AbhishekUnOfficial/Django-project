@@ -25,7 +25,7 @@ SECRET_KEY = "django-insecure-zm#ql3dx$a!1%eokwh1j_d8j*k)cnwn!obhfnz_+$2u$(!ml0i
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["django-scraper.vercel.app"]
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition

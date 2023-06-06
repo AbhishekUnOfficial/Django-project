@@ -1,20 +1,20 @@
-<!-- search_form.html -->
-
 <!DOCTYPE html>
 <html>
+
 <head>
-    <title>Content Search</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+  <title>skyScraper</title>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    <h1 class="text-center">skyScraper</h1>
 
-    <form method="POST" action="{% url 'skysearch' %}">
-        {% csrf_token %}
-        <label for="content_name">Enter Content Name:</label>
-        <input type="text" id="content_name" name="content_name" required>
-        <button type="submit">Search</button>
-    </form>
+<body class="text-5xl bg-gray-200 p-3">
+  <h1 class="text-center rounded-2xl bg-black text-white m-2 p-3">Skymovies Scraper</h1>
+
+  <form method="POST" action="{% url 'skysearch' %}">
+    {% csrf_token %}
+    <label class="" for="content_name">Series/Movies Name:</label>
+    <input type="text" id="content_name" name="content_name" required>
+    <button class="border-2 border-black bg-black text-white rounded-2xl p-2" type="submit">Search</button>
+  </form>
 </body>
-</html>
 
+</html>
