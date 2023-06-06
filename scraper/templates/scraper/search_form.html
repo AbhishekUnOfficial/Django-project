@@ -6,14 +6,18 @@
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body class="text-5xl bg-gray-100 p-3">
-  <h1 class="text-center rounded-2xl bg-black text-white m-2 p-3">Skymovies Scraper</h1>
-  <div class="bg-white">
+<body class="bg-gray-900 p-3">
+    <nav class="text-white space-x-4 border-y-white border-2">
+      <a href="/recent.html">RECENT MOVIES</a>
+      <a href="/categories.html">CATEGORIES</a>
+    </nav>
+  <h1 class="text-center text-6xl text-white pb-4">Skymovies Scraper</h1>
+  <div class="text-center">
     <form class="p-2" method="POST" action="{% url 'skysearch' %}">
       {% csrf_token %}
-      <label class="" for="content_name">Name:</label><br>
-      <input type="text" id="content_name" name="content_name" required><br>
-      <button class="border-2 border-black bg-green-700 text-white rounded-2xl p-2" type="submit">Search</button>
+      <!-- <label class="" for="content_name">Name:</label><br> -->
+      <input class="text-center box-border border-2 h-auto w-auto border-black rounded-2xl" type="text" id="content_name" name="content_name" required><br>
+      <button class="border-2 border-black bg-green-700 text-white rounded-2xl px-3" type="submit">Search</button>
     </form>
   </div>
 </body>
