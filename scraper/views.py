@@ -18,6 +18,6 @@ def skysearch(request):
                 names = atags.text.strip()
                 search_results.append((names, links))  # Append each search result to the list
 
-        return render(request, 'search_results.html', {'results': search_results})
+        return render(request, 'scraper/search_results.html', {'results': search_results})
 
-    return render(request, 'search_form.html')
+    return render(request, 'scraper/search_form.html')
