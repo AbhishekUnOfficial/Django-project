@@ -8,19 +8,17 @@
 
 <body class="bg-gradient-to-r from-sky-800 to-sky-400">
   <h1 class="text-center font-bold sm:text-7xl">Search Results</h1>
-  <div class="mx-2">
-    {% if results %}
-    <ul>
-      {% for name, link in results %}
-      <li>
-        <a href="{{ link }}">{{ name }}</a>
-      </li>
-      {% endfor %}
-    </ul>
-    {% else %}
-    <p>No search results found.</p>
-    {% endif %}
-  </div>
+  {% if results %}
+  <ul>
+    {% for name, link in results %}
+    <li>
+      <a href="{{ link }}">{{ name }}</a>
+    </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+  <p>No search results found.</p>
+  {% endif %}
 </body>
 
 </html>
