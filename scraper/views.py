@@ -29,10 +29,13 @@ def skyscrape(request):
         page = requests.get(url)
         soup = BeautifulSoup(page.text, "html.parser")
 
-        scraped_urls = []
+        scraped_urls = set()
 
-        for hb in soup.select('a[href^="https://hblogs.xyz"]'):
-            scraped_urls.append(hb['href'])
+        hlinks = soup.select('a[href^="https://howblogs.xyz"]')
+
+        for hlink in hlinks:
+            hb = hlink.get('href')
+            scraped_urls.add(hb)
         
         # Render the template with the scraped URLs as context
         return render(request, "scraper/skyscrape_output.html", {"scraped_urls": scraped_urls})
