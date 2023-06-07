@@ -1,26 +1,26 @@
-<!-- search_results.html -->
-
 <!DOCTYPE html>
 <html>
 
 <head>
+  <script src="https://cdn.tailwindcss.com"></script>
   <title>Search Results</title>
 </head>
 
-<body>
-  <h1>Search Results</h1>
-
-  {% if results %}
-  <ul>
-    {% for name, link in results %}
-    <li>
-      <a href="{{ link }}">{{ name }}</a>
-    </li>
-    {% endfor %}
-  </ul>
-  {% else %}
-  <p>No search results found.</p>
-  {% endif %}
+<body class="bg-gradient-to-r from-teal-500 to-teal-900">
+  <h1 class="text-center font-bold sm:text-7xl">Search Results</h1>
+  <div class="mx-2">
+    {% if results %}
+    <ol>
+      {% for name, link in results %}
+      <li>
+        <a href="{{ link }}">{{ name }}</a>
+      </li>
+      {% endfor %}
+    </ol>
+    {% else %}
+    <p>No search results found.</p>
+    {% endif %}
+  </div>
 </body>
 
 </html>
