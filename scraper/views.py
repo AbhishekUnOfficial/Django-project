@@ -23,7 +23,15 @@ def skyscrape(request):
         response = requests.get(url)
         soup = BeautifulSoup(response.text, "html.parser")
 
-        scraped_data = list(set((atag.get("href"), atag.text.strip()) for atag in soup.select('a[href^="https://howblogs.xyz"]')))
+        scraped_data = []
+        scraped_links = set()
+
+        for atag in soup.select('a[href^="https://howblogs.xyz"]'):
+            link = atag.get("href")
+            name = atag.text.strip()
+            if link not in scraped_links:
+                scraped_data.append((link, name))
+                scraped_links.add(link)
 
         return render(request, "scraper/skyscrape_output.html", {"scraped_data": scraped_data})
 

@@ -7,15 +7,15 @@
   <h1>Skyscrape Output</h1>
   
   <div>
-    <h2>Scraped URLs:</h2>
+    <h2>Scraped Data:</h2>
     <ul>
-      {% for scraped_url in scraped_urls %}
-        <li>{{ scraped_url }}</li>
+      {% for scraped_data in scraped_data %}
+        <li>Link: <a href="{{ scraped_data.0 }}">{{ scraped_data.0 }}</a></li>
+        <li>Name: {{ scraped_data.1 }}</li>
       {% empty %}
-        <li>No scraped URLs available.</li>
+        <li>No scraped data available.</li>
       {% endfor %}
     </ul>
   </div>
 </body>
 </html>
-
