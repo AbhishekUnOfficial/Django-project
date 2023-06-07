@@ -10,7 +10,13 @@ def skysearch(request):
         response = requests.get(url)
         soup = BeautifulSoup(response.text, "html.parser")
 
-        search_results = [(domain + atag.get("href"), atag.text.strip()) for atag in soup.select("div.L a")]
+        search_results = []  # Create an empty list to store the search results
+
+        for search_result in soup.find_all("div", class_="L"):
+            for atags in search_result.find_all("a"):
+                links = domain + atags.get("href")
+                names = atags.text.strip()
+                search_results.append((names, links))  # Append each search result to the list
 
         return render(request, "scraper/search_results.html", {"results": search_results})
 
@@ -19,21 +25,26 @@ def skysearch(request):
 
 def skyscrape(request):
     if request.method == "POST":
-        url = request.POST.get("link")
-        response = requests.get(url)
-        soup = BeautifulSoup(response.text, "html.parser")
+        url = request.POST.get("link")  # Input is stored in the "url" variable
+        page = requests.get(url)
+        soup = BeautifulSoup(page.text, "html.parser")
 
-        scraped_data = []
-        scraped_links = set()
+        link_dict = {}
 
-        for atag in soup.select('a[href^="https://howblogs.xyz"]'):
-            link = atag.get("href")
-            name = atag.text.strip()
-            if link not in scraped_links:
-                scraped_data.append((link, name))
-                scraped_links.add(link)
+        hlinks = soup.select('a[href^="https://howblogs.xyz"]')
+        for hlink in hlinks:
+            link = hlink.get('href')
+            name = hlink.text.strip()
+            if link not in link_dict:
+                link_dict[link] = name
 
-        return render(request, "scraper/skyscrape_output.html", {"scraped_data": scraped_data})
+        scraped_urls = []  # Create an empty list to store the scraped URLs
 
-    return render(request, "scraper/search_form.html")
-    
+        for link, name in link_dict.items():
+            scraped_urls.append((link, name))  # Append each scraped URL to the list
+        
+        # Render the template with the scraped URLs as context
+        return render(request, "scraper/skyscrape_output.html", {"scraped_urls": scraped_urls})
+            
+    return render(request, "scraper/search_form.html")  # Render the form template if not a POST request
+
