@@ -10,13 +10,7 @@ def skysearch(request):
         response = requests.get(url)
         soup = BeautifulSoup(response.text, "html.parser")
 
-        search_results = []  # Create an empty list to store the search results
-
-        for search_result in soup.find_all("div", class_="L"):
-            for atags in search_result.find_all("a"):
-                links = domain + atags.get("href")
-                names = atags.text.strip()
-                search_results.append((names, links))  # Append each search result to the list
+        search_results = [(domain + atag.get("href"), atag.text.strip()) for atag in soup.select("div.L a")]
 
         return render(request, "scraper/search_results.html", {"results": search_results})
 
@@ -25,20 +19,13 @@ def skysearch(request):
 
 def skyscrape(request):
     if request.method == "POST":
-        url = request.POST.get("link")  # Input is stored in the "url" variable
-        page = requests.get(url)
-        soup = BeautifulSoup(page.text, "html.parser")
+        url = request.POST.get("link")
+        response = requests.get(url)
+        soup = BeautifulSoup(response.text, "html.parser")
 
-        scraped_urls = set()
+        scraped_data = list(set((atag.get("href"), atag.text.strip()) for atag in soup.select('a[href^="https://howblogs.xyz"]')))
 
-        hlinks = soup.select('a[href^="https://howblogs.xyz"]')
+        return render(request, "scraper/skyscrape_output.html", {"scraped_data": scraped_data})
 
-        for hlink in hlinks:
-            hb = hlink.get('href')
-            scraped_urls.add(hb)
-        
-        # Render the template with the scraped URLs as context
-        return render(request, "scraper/skyscrape_output.html", {"scraped_urls": scraped_urls})
-            
-    return render(request, "scraper/search_form.html")  # Render the form template if not a POST request
+    return render(request, "scraper/search_form.html")
     
