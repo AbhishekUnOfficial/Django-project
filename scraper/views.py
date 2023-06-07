@@ -29,10 +29,13 @@ def skyscrape(request):
         page = requests.get(url)
         soup = BeautifulSoup(page.text, "html.parser")
 
+        scraped_urls = []
+
         for hb in soup.select('a[href^="https://hblogs.xyz"]'):
-            print(hb['href'])
+            scraped_urls.append(hb['href'])
         
-        # Process the input URL further as needed
-        
+        # Render the template with the scraped URLs as context
+        return render(request, "scraper/skyscrape_output.html", {"scraped_urls": scraped_urls})
+            
     return render(request, "scraper/search_form.html")  # Render the form template if not a POST request
     

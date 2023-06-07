@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Skyscrape Output</title>
+</head>
+<body>
+  <h1>Skyscrape Output</h1>
+  
+  <div>
+    <h2>Scraped URLs:</h2>
+    <ul>
+      {% for scraped_url in scraped_urls %}
+        <li>{{ scraped_url }}</li>
+      {% empty %}
+        <li>No scraped URLs available.</li>
+      {% endfor %}
+    </ul>
+  </div>
+</body>
+</html>
+
