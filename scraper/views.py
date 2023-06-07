@@ -5,7 +5,7 @@ from django.shortcuts import render
 def skysearch(request):
     if request.method == "POST":
         content_name = request.POST.get("content_name")
-        domain = "https://skymovieshd.gold"
+        domain = "https://skymovieshd.date"
         url = f"{domain}/search.php?search={content_name}&cat=All"
         response = requests.get(url)
         soup = BeautifulSoup(response.text, "html.parser")
