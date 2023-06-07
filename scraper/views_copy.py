@@ -2,6 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 from django.shortcuts import render
 
+
 def skysearch(request):
     if request.method == "POST":
         content_name = request.POST.get("content_name")
@@ -16,23 +17,23 @@ def skysearch(request):
             for atags in search_result.find_all("a"):
                 links = domain + atags.get("href")
                 names = atags.text.strip()
-                search_results.append((names, links))  # Append each search result to the list
+                search_results.append(
+                    (names, links)
+                )  # Append each search result to the list
 
-        return render(request, "scraper/search_results.html", {"results": search_results})
+        return render(
+            request, "scraper/search_results.html", {"results": search_results}
+        )
 
     return render(request, "scraper/search_form.html")
 
 
 def skyscrape(request):
     if request.method == "POST":
-        url = request.POST.get("link")  # Input is stored in the "url" variable
+        url = request.POST.get("link")
         page = requests.get(url)
         soup = BeautifulSoup(page.text, "html.parser")
 
         for hb in soup.select('a[href^="https://hblogs.xyz"]'):
             print(hb['href'])
         
-        # Process the input URL further as needed
-        
-    return render(request, "scraper/search_form.html")  # Render the form template if not a POST request
-    
