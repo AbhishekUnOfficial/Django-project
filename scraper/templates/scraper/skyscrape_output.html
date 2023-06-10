@@ -11,7 +11,7 @@
   <div class="text-5xl p-4 bg-yellow-100 rounded-2xl mx-16 my-2">
     <ul class="space-y-5">
       {% for scraped_url in scraped_urls %}
-      <li><a href="{{ scraped_url.0 }}">{{ scraped_url.1 }}</a></li>
+        <li><a href="{{ scraped_url.0 }}">{{ scraped_url.1 }}</a></li>
       {% empty %}
       <li>No scraped URLs available.</li>
       {% endfor %}
