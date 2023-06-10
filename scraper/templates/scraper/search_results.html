@@ -7,20 +7,20 @@
     function handleLinkClick(event) {
       event.preventDefault(); // Prevents the default link behavior of navigating to a new page
       var clickedLink = event.target.getAttribute('href'); // Retrieve the value of the clicked link
-      // Do something with the clicked link value, such as sending it to a server or processing it further
-      console.log('Clicked Link:', clickedLink);
-      // You can add your own code here to perform additional actions with the clicked link value
+      if (clickedLink) {
+        document.getElementById('link').value = clickedLink;
+      }
     }
   </script>
 </head>
 <body class="bg-gradient-to-r from-sky-800 to-sky-400">
   <h1 class="text-center my-2 font-bold sm:text-7xl">Search Results</h1>
-  <div class="text-center text-5xl my-2">
+  <div class="text-5xl my-2">
     {% if results %}
     <ul>
       {% for name, link in results %}
       <li>
-        <a class="" href="{{ link }}" onclick="handleLinkClick(event)">{{ name }}</a>
+          <a href="{{ link }}" onclick="handleLinkClick(event)"><span class="m-5">{{ name }}</span></a>
       </li>
       {% endfor %}
     </ul>
