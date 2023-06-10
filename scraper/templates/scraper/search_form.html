@@ -11,11 +11,11 @@
   <div class="text-center">
     <form class="p-2" method="POST" action="{% url 'skysearch' %}">
       {% csrf_token %}
-      <div class="flex flex-col flex-row mx-16">
+      <div class="flex flex-col mx-16">
         <!-- <label class="" for="content_name">Name:</label><br> -->
-        <input class="text-center font-mono box-border border-2 border-black rounded-2xl h-20 text-7xl"
-          type="text" id="content_name" name="content_name" required><br>
-        <button class="border-2 my-2 border-black bg-black text-white rounded-2xl px-3 font-mono text-7xl"
+        <input class="text-center border-2 border-black hover:border-blue-100 selection:border-blue-100 py-2 px-2 rounded-2xl h-20 text-7xl" type="text"
+          id="content_name" name="content_name" required><br>
+        <button class="border-2 border-black bg-black text-white rounded-2xl px-2 py-2 font-bold text-7xl"
           type="submit">Search</button>
       </div>
     </form>
