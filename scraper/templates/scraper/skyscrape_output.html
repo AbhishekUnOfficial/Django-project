@@ -7,8 +7,8 @@
 </head>
 
 <body class="bg-gradient-to-r from-blue-900 to-blue-600">
-  <h1 class="text-center text-5xl border-2 border-black mx-16 my-2 py-2 rounded-2xl bg-black text-white font-bold">Scraped URLs</h1>
-  <div class="text-7xl p-4 bg-yellow-100 rounded-2xl mx-16 my-2">
+  <h1 class="text-center text-7xl border-2 border-black mx-16 my-2 py-2 rounded-2xl bg-black text-white font-bold">Scraped URLs</h1>
+  <div class="text-5xl p-4 bg-yellow-100 rounded-2xl mx-16 my-2">
     <ul class="space-y-5">
       {% for scraped_url in scraped_urls %}
         <li><a href="{{ scraped_url.0 }}">{{ scraped_url.1 }}</a></li>

@@ -23,12 +23,16 @@
     {% endif %}
   </div>
   <div class="text-center text-5xl">
+    <!-- form started -->
     <form id="clear" method="POST" action="{% url 'skyscrape' %}">
       {% csrf_token %}
       <div class="flex flex-col mx-16">
-        <input class="rounded-2xl my-2 h-20" type="text" id="link" name="link" value="">
+        <!-- input box -->
+        <input class="rounded-2xl my-2 px-3 h-20" type="text" id="link" name="link" placeholder="Just click on the link to insert link here">
+        <!-- scrape button -->
         <button class="border-2 bg-black border-black font-bold my-2 py-2 px-2 text-7xl rounded-2xl text-white"
           type="submit">Scrape</button>
+        <!-- clear button -->
         <input
           class="text-7xl text-center text-white my-2 border-2 border-black bg-black rounded-2xl py-2 px-2 font-bold"
           type="button" value="Clear" onclick="clearInput()">
