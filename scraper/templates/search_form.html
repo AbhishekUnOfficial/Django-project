@@ -3,33 +3,37 @@
 
 <head>
   <title>Skymovies Scraper</title>
-  {% load static %}
-  <link rel="stylesheet" href={% static 'main.css' %}>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body>
-  <h1>Skymovies Scraper</h1>
-  <div class="card">
-    <!-- form started -->
-    <form id="clear" method="POST" action="{% url 'skysearch' %}">
-      {% csrf_token %}
-      <!-- input box -->
-      <input class="text" type="text" id="content_name" name="content_name" placeholder="Enter any content name" required><br>
-      <div class="btn-section">
-        <!--search button -->
-        <input class="btn-blue" type="submit" value="Search">
-        <!-- clear button -->
-        <input class="btn-red" type="button" onclick="clearInput()" value="Clear">
-      </div>
-    </form>
+<body class="flex h-screen bg-gray-100">
+  <div class="m-auto bg-white p-5 rounded-lg">
+    <h1 class="text-4xl font-bold text-center">Skymovies Scraper</h1>
+    <div>
+      <!-- form started -->
+      <form class="shadow-lg rounded" id="clear" method="POST" action="{% url 'skysearch' %}">
+        {% csrf_token %}
+        <!-- input box -->
+        <input class="border-2 shadow-lg my-3" type="text" id="content_name" name="content_name"
+          placeholder="Enter any content name" required><br>
+        <!-- button section -->
+        <div class="py-3 items-center">
+          <!--search button -->
+          <input class="text-white shadow-lg bg-blue-700 rounded-full font-medium text-sm px-5 py-2.5" type="submit"
+            value="Search">
+          <!-- clear button -->
+          <input class="text-white shadow-lg bg-red-600 rounded-full font-medium text-sm px-5 py-2.5" type="button"
+            onclick="clearInput()" value="Clear">
+        </div>
+      </form>
+    </div>
+    <!-- script part -->
+    <script>
+      function clearInput() {
+        document.getElementById("content_name").value = "";
+      };
+    </script>
   </div>
-
-  <!-- script part -->
-  <script>
-    function clearInput() {
-      document.getElementById("content_name").value = "";
-    };
-  </script>
 </body>
 
 </html>
