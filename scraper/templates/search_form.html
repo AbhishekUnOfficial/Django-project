@@ -3,24 +3,23 @@
 
 <head>
   <title>Skymovies Scraper</title>
-  <link rel="stylesheet" href="main.css">
+  {% load static %}
+  <link rel="stylesheet" href={% static 'main.css' %}>
 </head>
 
 <body>
   <h1>Skymovies Scraper</h1>
-  <div>
+  <div class="card">
     <!-- form started -->
     <form id="clear" method="POST" action="{% url 'skysearch' %}">
       {% csrf_token %}
-      <div>
-        <!-- input box -->
-        <input type="text" id="content_name" name="content_name" placeholder="Enter any content name" required><br>
-      </div>
-      <div class="">
+      <!-- input box -->
+      <input class="text" type="text" id="content_name" name="content_name" placeholder="Enter any content name" required><br>
+      <div class="btn-section">
         <!--search button -->
-        <input type="submit" value="Search">
+        <input class="btn-blue" type="submit" value="Search">
         <!-- clear button -->
-        <input type="button" onclick="clearInput()" value="Clear">
+        <input class="btn-red" type="button" onclick="clearInput()" value="Clear">
       </div>
     </form>
   </div>

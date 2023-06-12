@@ -18,9 +18,9 @@ def skysearch(request):
                 names = atags.text.strip()
                 search_results.append((names, links))  # Append each search result to the list
 
-        return render(request, "scraper/search_results.html", {"results": search_results})
+        return render(request, "search_results.html", {"results": search_results})
 
-    return render(request, "scraper/search_form.html")
+    return render(request, "search_form.html")
 
 
 def skyscrape(request):
@@ -44,7 +44,7 @@ def skyscrape(request):
             scraped_urls.append((link, name))  # Append each scraped URL to the list
         
         # Render the template with the scraped URLs as context
-        return render(request, "scraper/skyscrape_output.html", {"scraped_urls": scraped_urls})
+        return render(request, "skyscrape_output.html", {"scraped_urls": scraped_urls})
             
-    return render(request, "scraper/search_form.html")  # Render the form template if not a POST request
+    return render(request, "search_form.html")  # Render the form template if not a POST request
 
