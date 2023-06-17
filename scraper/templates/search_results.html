@@ -14,7 +14,7 @@
     <ul class="space-y-7">
       {% for name, link in results %}
       <li>
-        <a href="{{ link }}" onclick="setLink(event, this)"><span>{{ name }}</span></a>
+        <a href="{% url 'skyscrape' movie=link|urlencode %}" onclick="setLink(event, this)"><span>{{ name }}</span></a>
       </li>
       {% endfor %}
     </ul>
@@ -28,7 +28,8 @@
       {% csrf_token %}
       <div class="flex flex-col mx-16">
         <!-- input box -->
-        <input class="rounded-2xl my-2 px-3 h-20" type="text" id="link" name="link" placeholder="Just click on the link to insert link here">
+        <input class="rounded-2xl my-2 px-3 h-20" type="text" id="link" name="link"
+          placeholder="Just click on the link to insert link here">
         <!-- scrape button -->
         <button class="border-2 bg-black border-black font-bold my-2 py-2 px-2 text-7xl rounded-2xl text-white"
           type="submit">Scrape</button>

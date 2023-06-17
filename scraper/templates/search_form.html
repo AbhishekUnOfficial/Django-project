@@ -8,22 +8,25 @@
 
 <body class="sm:container lg:container lg:mx-auto sm:mx-auto bg-gradient-to-l from-blue-600 to to-blue-700">
   <div class="sm:text-5xl p-6 mt-5 bg-blue-500 rounded-2xl container">
-    <h1 class="my-4 text-white text-center text-7xl font-extrabold">Skymovies Scraper</h1>
-    <div>
+    <h1 class="my-4 py-3 text-white text-center text-7xl font-extrabold">Skymovies Scraper</h1>
+    <div class="">
       <!-- form started -->
       <form class="text-center" id="clear" method="POST" action="{% url 'skysearch' %}">
         {% csrf_token %}
         <!-- input box -->
-        <input class="border-2 focus:border-2 selection:border-blue-900 capitalize rounded-full px-5 py-5 my-2 shadow-md" type="text" id="content_name" name="content_name"
-          placeholder="Enter any content name" required><br>
+        <input
+          class="border-2 mb-3 focus:border-2 selection:border-blue-900 capitalize rounded-full px-5 py-5 my-2 shadow-md"
+          type="text" id="content_name" name="content_name" placeholder="Enter any content name" required><br>
         <!-- button section -->
         <div class="my-4">
           <!--search button -->
-          <input class="text-white shadow-lg bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 rounded-full font-medium text-4xl px-5 py-2.5" type="submit"
-            value="Search">
+          <input
+            class="text-white shadow-lg bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 rounded-full font-medium text-4xl px-5 py-2.5"
+            type="submit" value="Search">
           <!-- clear button -->
-          <input class="text-white shadow-lg bg-gradient-to-r from-red-400 via-red-500 to-red-600 rounded-full font-medium text-4xl px-8 py-2.5" type="button"
-            onclick="clearInput()" value="Clear">
+          <input
+            class="text-white shadow-lg bg-gradient-to-r from-red-400 via-red-500 to-red-600 rounded-full font-medium text-4xl px-8 py-2.5"
+            type="button" onclick="clearInput()" value="Clear">
         </div>
       </form>
     </div>

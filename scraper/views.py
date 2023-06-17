@@ -5,8 +5,9 @@ from django.shortcuts import render
 def skysearch(request):
     if request.method == "POST":
         content_name = request.POST.get("content_name")
-        domain = "https://skymovieshd.date"
+        domain = "https://skymovieshd.bet"
         url = f"{domain}/search.php?search={content_name}&cat=All"
+        print(url)
         response = requests.get(url)
         soup = BeautifulSoup(response.text, "html.parser")
 
@@ -14,7 +15,8 @@ def skysearch(request):
 
         for search_result in soup.find_all("div", class_="L"):
             for atags in search_result.find_all("a"):
-                links = domain + atags.get("href")
+                # links = domain + atags.get("href")
+                links = atags.get('href')
                 names = atags.text.strip()
                 search_results.append((names, links))  # Append each search result to the list
 
@@ -23,9 +25,11 @@ def skysearch(request):
     return render(request, "search_form.html")
 
 
-def skyscrape(request):
+def skyscrape(request, movie):
     if request.method == "POST":
-        url = request.POST.get("link")  # Input is stored in the "url" variable
+        # url = request.POST.get("link")  # Input is stored in the "url" variable
+        domain = "https://www.skymovieshd.bet"
+        url = domain + movie
         page = requests.get(url)
         soup = BeautifulSoup(page.text, "html.parser")
 
